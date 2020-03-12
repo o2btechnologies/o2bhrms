@@ -171,6 +171,9 @@ class PrintingPrinter(models.Model):
             "Sending job to CUPS printer %s on %s"
             % (self.system_name, self.server_id.address)
         )
+        _logger.info(
+            "system_name: '{}' file_name {} options {}".format(self.system_name, file_name, options)
+        )
         connection.printFile(self.system_name, file_name, file_name, options=options)
         _logger.info(
             "Printing job: '{}' on {}".format(file_name, self.server_id.address)
